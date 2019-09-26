@@ -32,9 +32,9 @@ class FinerVision extends Component {
     };
 
     onSubmit = e => {
-        console.log(e.persist())
         e.preventDefault();
         const {firstName, lastName, Email, TelNumber, Gender, DoB, Comments} = this.state;
+
         let data = {
             firstName: firstName,
             lastName: lastName,
@@ -224,7 +224,7 @@ class FinerVision extends Component {
                                         error={errors.Comments}
                                     />
                                 </div>
-                                <button type="submit" name="submit" value="Submit" onClick={this.onSubmit}>Next ></button>
+                                <button type="submit">Next ></button>
                             </div>
                         </div>
                     </div>

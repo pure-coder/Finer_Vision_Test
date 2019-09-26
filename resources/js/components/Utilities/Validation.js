@@ -20,7 +20,7 @@ module.exports = function validateFormInput(data) {
         }
     }
 
-    if (isEmpty(data.Email)){
+    if (!isEmpty(data.Email)){
         if (!Validator.isEmail(data.Email)) {
             errors.Email = 'A valid email is required';
         }

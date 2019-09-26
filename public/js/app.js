@@ -52761,7 +52761,6 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onSubmit", function (e) {
-      console.log(e.persist());
       e.preventDefault();
       var _this$state = _this.state,
           firstName = _this$state.firstName,
@@ -52977,10 +52976,7 @@ function (_Component) {
         onChange: this.valueChange,
         error: errors.Comments
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        name: "submit",
-        value: "Submit",
-        onClick: this.onSubmit
+        type: "submit"
       }, "Next >"))))));
     }
   }]);
@@ -53021,7 +53017,6 @@ var FormInputGroup = function FormInputGroup(_ref) {
       type = _ref.type,
       onChange = _ref.onChange,
       onClick = _ref.onClick,
-      onBlur = _ref.onBlur,
       error = _ref.error;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: myClassName
@@ -53030,7 +53025,7 @@ var FormInputGroup = function FormInputGroup(_ref) {
     // 1st parameter are default classes that should always be used, the 2nd
     // parameter adds 'is-invalid' if errors.FullName exists
     ,
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(myClassName, {
       'is-invalid': error
     }),
     placeholder: placeholder,
@@ -53038,8 +53033,7 @@ var FormInputGroup = function FormInputGroup(_ref) {
     name: name,
     onClick: onClick,
     value: value,
-    onChange: onChange,
-    onBlur: onBlur
+    onChange: onChange
   }), error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "invalid-feedback"
   }, error));
@@ -53168,7 +53162,7 @@ module.exports = function validateFormInput(data) {
     }
   }
 
-  if (isEmpty(data.Email)) {
+  if (!isEmpty(data.Email)) {
     if (!Validator.isEmail(data.Email)) {
       errors.Email = 'A valid email is required';
     }
@@ -53231,8 +53225,8 @@ module.exports = isEmpty;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jrdun\something\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jrdun\something\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jrdun\Vision_Test\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jrdun\Vision_Test\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

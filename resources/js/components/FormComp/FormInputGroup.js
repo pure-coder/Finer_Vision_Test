@@ -11,7 +11,6 @@ const FormInputGroup = ({
                             type,
                             onChange,
                             onClick,
-                            onBlur,
                             error
                         }) => {
     return (
@@ -20,14 +19,13 @@ const FormInputGroup = ({
                 // Using classnames package to display errors to user if they occur
                 // 1st parameter are default classes that should always be used, the 2nd
                 // parameter adds 'is-invalid' if errors.FullName exists
-                   className={classnames({'is-invalid': error})}
+                   className={classnames(myClassName ,{'is-invalid': error})}
                    placeholder={placeholder}
                    id={id}
                    name={name}
                    onClick={onClick}
                    value={value}
                    onChange={onChange}
-                   onBlur={onBlur}
             />
             {/* This adds the feedback to the user (which was defined in*/}
             {/*  validation/registration.js on the API server*/}
