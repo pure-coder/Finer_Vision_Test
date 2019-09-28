@@ -23,6 +23,9 @@ class FinerVision extends Component {
             Comments: '',
             errors: []
         }
+
+        this.valueChange = this.valueChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     valueChange(e){
@@ -71,7 +74,7 @@ class FinerVision extends Component {
 
         return (
             <div id="accordion" className="container-1">
-                <form autoComplete="off" onSubmit={this.onSubmit().bind(this)}>
+                <form autoComplete="off" onSubmit={this.onSubmit}>
 
                     <a id="toggle" href="#section-1-hide" className="collapse show" data-toggle="collapse"
                        data-target="#section-1-hide"
@@ -92,7 +95,7 @@ class FinerVision extends Component {
                                         name="firstName"
                                         value={firstName}
                                         type="text"
-                                        onChange={this.valueChange.bind(this)}
+                                        onChange={this.valueChange}
                                         error={errors.firstName}
                                     />
                                 </div>
@@ -105,7 +108,7 @@ class FinerVision extends Component {
                                         name="lastName"
                                         value={lastName}
                                         type="text"
-                                        onChange={this.valueChange.bind(this)}
+                                        onChange={this.valueChange}
                                         error={errors.lastName}
                                     />
 
@@ -121,7 +124,7 @@ class FinerVision extends Component {
                                         name="Email"
                                         value={Email}
                                         type="text"
-                                        onChange={this.valueChange.bind(this)}
+                                        onChange={this.valueChange}
                                         error={errors.Email}
                                     />
                                 </div>
@@ -157,7 +160,7 @@ class FinerVision extends Component {
                                         name="TelNumber"
                                         value={TelNumber}
                                         type="text"
-                                        onChange={this.valueChange.bind(this)}
+                                        onChange={this.valueChange}
                                         error={errors.TelNumber}
                                     />
                                 </div>
@@ -170,7 +173,7 @@ class FinerVision extends Component {
                                         name="Gender"
                                         id="Gender"
                                         values={Values}
-                                        onChange={this.valueChange.bind(this)}
+                                        onChange={this.valueChange}
                                         error={errors.Gender}
                                     />
                                 </div>
@@ -184,7 +187,7 @@ class FinerVision extends Component {
                                     name="DoB"
                                     value={DoB}
                                     type="date"
-                                    onChange={this.valueChange.bind(this)}
+                                    onChange={this.valueChange}
                                     error={errors.DoB}
                                 />
                             </div>
@@ -220,7 +223,7 @@ class FinerVision extends Component {
                                         type="textarea"
                                         rows="6"
                                         cols="35"
-                                        onChange={this.valueChange.bind(this)}
+                                        onChange={this.valueChange}
                                         error={errors.Comments}
                                     />
                                 </div>
