@@ -52714,6 +52714,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormComp_TextAreaProfile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormComp/TextAreaProfile */ "./resources/js/components/FormComp/TextAreaProfile.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -52722,15 +52724,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -52751,18 +52751,34 @@ function (_Component) {
     _classCallCheck(this, FinerVision);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(FinerVision).call(this, props));
+    _this.state = {
+      firstName: '',
+      lastName: '',
+      Email: '',
+      TelNumber: '',
+      Gender: '',
+      Values: ['Male', 'Female'],
+      DoB: '',
+      Comments: '',
+      errors: []
+    };
+    return _this;
+  }
 
-    _defineProperty(_assertThisInitialized(_this), "valueChange", function (e) {
+  _createClass(FinerVision, [{
+    key: "valueChange",
+    value: function valueChange(e) {
       var _e$target = e.target,
           name = _e$target.name,
           value = _e$target.value; // Initialise previous data to this data
 
-      _this.setState(_defineProperty({}, name, value));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onSubmit", function (e) {
+      this.setState(_defineProperty({}, name, value));
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
       e.preventDefault();
-      var _this$state = _this.state,
+      var _this$state = this.state,
           firstName = _this$state.firstName,
           lastName = _this$state.lastName,
           Email = _this$state.Email,
@@ -52782,35 +52798,19 @@ function (_Component) {
       var checkData = _Utilities_Validation__WEBPACK_IMPORTED_MODULE_5___default()(data);
 
       if (!checkData.isValid) {
-        _this.setState({
+        this.setState({
           errors: checkData.errors
         });
       } else {
-        _this.setState({
+        this.setState({
           errors: {}
         });
-
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/', data).then(function (response) {//console.log(response);
         })["catch"](function (err) {//console.log(err);
         });
       }
-    });
-
-    _this.state = {
-      firstName: '',
-      lastName: '',
-      Email: '',
-      TelNumber: '',
-      Gender: '',
-      Values: ['Male', 'Female'],
-      DoB: '',
-      Comments: '',
-      errors: []
-    };
-    return _this;
-  }
-
-  _createClass(FinerVision, [{
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$state2 = this.state,
@@ -52827,7 +52827,7 @@ function (_Component) {
         className: "container-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         autoComplete: "off",
-        onSubmit: this.onSubmit
+        onSubmit: this.onSubmit().bind(this)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         id: "toggle",
         href: "#section-1-hide",
@@ -52856,7 +52856,7 @@ function (_Component) {
         name: "firstName",
         value: firstName,
         type: "text",
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.firstName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inline"
@@ -52865,7 +52865,7 @@ function (_Component) {
         name: "lastName",
         value: lastName,
         type: "text",
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.lastName
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-1"
@@ -52876,7 +52876,7 @@ function (_Component) {
         name: "Email",
         value: Email,
         type: "text",
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.Email
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-1 button"
@@ -52914,7 +52914,7 @@ function (_Component) {
         name: "TelNumber",
         value: TelNumber,
         type: "text",
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.TelNumber
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inline"
@@ -52923,7 +52923,7 @@ function (_Component) {
         name: "Gender",
         id: "Gender",
         values: Values,
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.Gender
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-1"
@@ -52932,7 +52932,7 @@ function (_Component) {
         name: "DoB",
         value: DoB,
         type: "date",
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.DoB
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-1 button"
@@ -52973,7 +52973,7 @@ function (_Component) {
         type: "textarea",
         rows: "6",
         cols: "35",
-        onChange: this.valueChange,
+        onChange: this.valueChange.bind(this),
         error: errors.Comments
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
@@ -53225,8 +53225,8 @@ module.exports = isEmpty;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\jrdun\Vision_Test\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\jrdun\Vision_Test\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\newVision\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\newVision\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

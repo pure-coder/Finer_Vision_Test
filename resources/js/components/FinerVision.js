@@ -25,13 +25,13 @@ class FinerVision extends Component {
         }
     }
 
-    valueChange = e => {
+    valueChange(e){
         const {name, value} = e.target;
         // Initialise previous data to this data
         this.setState({[name]: value});
     };
 
-    onSubmit = e => {
+    onSubmit(e){
         e.preventDefault();
         const {firstName, lastName, Email, TelNumber, Gender, DoB, Comments} = this.state;
 
@@ -71,7 +71,7 @@ class FinerVision extends Component {
 
         return (
             <div id="accordion" className="container-1">
-                <form autoComplete="off" onSubmit={this.onSubmit}>
+                <form autoComplete="off" onSubmit={this.onSubmit().bind(this)}>
 
                     <a id="toggle" href="#section-1-hide" className="collapse show" data-toggle="collapse"
                        data-target="#section-1-hide"
@@ -92,7 +92,7 @@ class FinerVision extends Component {
                                         name="firstName"
                                         value={firstName}
                                         type="text"
-                                        onChange={this.valueChange}
+                                        onChange={this.valueChange.bind(this)}
                                         error={errors.firstName}
                                     />
                                 </div>
@@ -105,7 +105,7 @@ class FinerVision extends Component {
                                         name="lastName"
                                         value={lastName}
                                         type="text"
-                                        onChange={this.valueChange}
+                                        onChange={this.valueChange.bind(this)}
                                         error={errors.lastName}
                                     />
 
@@ -121,7 +121,7 @@ class FinerVision extends Component {
                                         name="Email"
                                         value={Email}
                                         type="text"
-                                        onChange={this.valueChange}
+                                        onChange={this.valueChange.bind(this)}
                                         error={errors.Email}
                                     />
                                 </div>
@@ -157,7 +157,7 @@ class FinerVision extends Component {
                                         name="TelNumber"
                                         value={TelNumber}
                                         type="text"
-                                        onChange={this.valueChange}
+                                        onChange={this.valueChange.bind(this)}
                                         error={errors.TelNumber}
                                     />
                                 </div>
@@ -170,7 +170,7 @@ class FinerVision extends Component {
                                         name="Gender"
                                         id="Gender"
                                         values={Values}
-                                        onChange={this.valueChange}
+                                        onChange={this.valueChange.bind(this)}
                                         error={errors.Gender}
                                     />
                                 </div>
@@ -184,7 +184,7 @@ class FinerVision extends Component {
                                     name="DoB"
                                     value={DoB}
                                     type="date"
-                                    onChange={this.valueChange}
+                                    onChange={this.valueChange.bind(this)}
                                     error={errors.DoB}
                                 />
                             </div>
@@ -220,7 +220,7 @@ class FinerVision extends Component {
                                         type="textarea"
                                         rows="6"
                                         cols="35"
-                                        onChange={this.valueChange}
+                                        onChange={this.valueChange.bind(this)}
                                         error={errors.Comments}
                                     />
                                 </div>
