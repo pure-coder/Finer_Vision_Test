@@ -24,6 +24,6 @@
     },
     "dependencies": {
         "classnames": "^2.2.6",
-        "validator": "^11.1.0"
+        "validator": "^13.7.0"
     }
 }
